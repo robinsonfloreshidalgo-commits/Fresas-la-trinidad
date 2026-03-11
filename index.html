@@ -4,182 +4,159 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fresas La Trinidad 🍓</title>
+<title>Fresas El Cerro 🍓</title>
 
 <style>
 
-body{
-font-family: Arial, sans-serif;
+*{
+box-sizing:border-box;
 margin:0;
-color:#333;
-scroll-behavior:smooth;
+padding:0;
+}
 
-/* fondo con imagen */
+body{
+font-family:Arial, sans-serif;
+color:white;
+text-align:center;
 background-image:url("https://images.unsplash.com/photo-1464965911861-746a04b4bca6");
 background-size:cover;
-background-repeat:no-repeat;
+background-position:center;
 background-attachment:fixed;
-
-/* animación del fondo */
-animation:moverFondo 25s infinite alternate linear;
+overflow-x:hidden;
 }
 
-@keyframes moverFondo{
-0%{background-position:center top;}
-100%{background-position:center bottom;}
+/* capa oscura */
+.overlay{
+background:rgba(0,0,0,0.55);
+min-height:100vh;
+padding-bottom:40px;
 }
 
+/* titulo */
 header{
-background:rgba(255,46,99,0.9);
-color:white;
-padding:40px;
-text-align:center;
+padding:40px 20px;
+font-size:40px;
+font-weight:bold;
 }
 
-header h1{
-font-size:45px;
-margin:0;
-}
-
-header p{
-font-size:20px;
-}
-
+/* menu */
 nav{
-background:rgba(255,46,99,0.95);
-padding:15px;
-text-align:center;
+margin-bottom:20px;
 }
 
 nav a{
+display:inline-block;
 color:white;
 text-decoration:none;
-margin:15px;
-font-weight:bold;
-font-size:18px;
+margin:10px;
+padding:10px 20px;
+border-radius:10px;
+background:rgba(255,255,255,0.2);
+transition:0.3s;
 }
 
 nav a:hover{
-text-decoration:underline;
+background:#ff4d6d;
 }
 
-/* CUADROS ADAPTADOS AL CONTENIDO */
-
-section{
-padding:25px 30px;
-text-align:center;
-background:rgba(255,255,255,0.85);
-margin:25px auto;
-border-radius:15px;
-display:block;
+/* secciones */
+.section{
+background:rgba(255,255,255,0.9);
+color:#333;
+width:90%;
 max-width:900px;
+margin:auto;
+margin-top:30px;
+padding:25px;
+border-radius:15px;
 }
 
-/* galería */
-
+/* galeria */
 .galeria{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px;
+margin-top:20px;
 }
 
 .galeria img{
 width:100%;
-border-radius:15px;
-box-shadow:0 5px 15px rgba(0,0,0,0.2);
-transition:0.3s;
+border-radius:10px;
+transition:transform 0.4s;
 }
 
+/* animacion imagen */
 .galeria img:hover{
-transform:scale(1.05);
+transform:scale(1.1) rotate(2deg);
 }
 
-/* tarjetas */
-
-.card{
-background:rgba(255,255,255,0.95);
-padding:20px;
-border-radius:15px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-margin:15px;
-display:inline-block;
-min-width:220px;
-max-width:260px;
-transition:0.3s;
+/* opiniones */
+.opiniones{
+margin-top:20px;
+display:grid;
+gap:15px;
 }
 
-.card:hover{
-transform:translateY(-5px);
+.opinion{
+background:#fff;
+padding:15px;
+border-radius:10px;
+box-shadow:0 3px 8px rgba(0,0,0,0.2);
 }
 
-.precio{
-font-size:25px;
-color:#ff2e63;
-font-weight:bold;
-margin:10px 0;
-}
-
-button{
+/* boton whatsapp */
+.whatsapp{
 background:#25D366;
 color:white;
+padding:15px 25px;
+font-size:18px;
 border:none;
-padding:12px 20px;
-font-size:16px;
 border-radius:10px;
 cursor:pointer;
-transition:0.3s;
+margin-top:20px;
 }
 
-button:hover{
-background:#1ebc59;
-}
-
-footer{
-background:#ff2e63;
-color:white;
-text-align:center;
-padding:20px;
-margin-top:40px;
+.whatsapp:hover{
+background:#1ebe5d;
 }
 
 /* fresas cayendo */
-
-.fresas{
+.fresa{
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-pointer-events:none;
-overflow:hidden;
+top:-50px;
+font-size:25px;
+animation:caer linear infinite;
 }
-
-.fresas span{
-position:absolute;
-font-size:30px;
-animation:caer 10s linear infinite;
-}
-
-.fresas span:nth-child(1){left:5%;animation-duration:7s;}
-.fresas span:nth-child(2){left:15%;animation-duration:10s;}
-.fresas span:nth-child(3){left:25%;animation-duration:8s;}
-.fresas span:nth-child(4){left:35%;animation-duration:12s;}
-.fresas span:nth-child(5){left:45%;animation-duration:9s;}
-.fresas span:nth-child(6){left:55%;animation-duration:11s;}
-.fresas span:nth-child(7){left:65%;animation-duration:7s;}
-.fresas span:nth-child(8){left:75%;animation-duration:10s;}
-.fresas span:nth-child(9){left:85%;animation-duration:8s;}
-.fresas span:nth-child(10){left:95%;animation-duration:12s;}
 
 @keyframes caer{
 0%{
-transform:translateY(-100px) rotate(0deg);
+transform:translateY(-50px);
 opacity:1;
 }
+
 100%{
-transform:translateY(100vh) rotate(360deg);
-opacity:0.7;
+transform:translateY(110vh);
+opacity:0;
 }
+}
+
+/* responsive celular */
+@media (max-width:600px){
+
+header{
+font-size:28px;
+}
+
+nav a{
+display:block;
+margin:8px auto;
+width:80%;
+}
+
+.section{
+width:95%;
+}
+
 }
 
 </style>
@@ -187,103 +164,87 @@ opacity:0.7;
 
 <body>
 
-<div class="fresas">
-<span>🍓</span>
-<span>🍓</span>
-<span>🍓</span>
-<span>🍓</span>
-<span>🍓</span>
-<span>🍓</span>
-<span>🍓</span>
-<span>🍓</span>
-<span>🍓</span>
-<span>🍓</span>
-</div>
+<!-- fresas animadas -->
+<div class="fresa" style="left:5%; animation-duration:6s;">🍓</div>
+<div class="fresa" style="left:20%; animation-duration:8s;">🍓</div>
+<div class="fresa" style="left:40%; animation-duration:7s;">🍓</div>
+<div class="fresa" style="left:60%; animation-duration:9s;">🍓</div>
+<div class="fresa" style="left:80%; animation-duration:6s;">🍓</div>
+
+<div class="overlay">
 
 <header>
-<h1>🍓 Fresas y Uchuvas La Trinidad</h1>
-<p>Las fresas y uchuvas más frescas y dulces de la zona</p>
+🍓 Fresas El Cerro 🍓
 </header>
 
 <nav>
-<a href="#inicio">Inicio</a>
-<a href="#productos">Productos</a>
 <a href="#galeria">Galería</a>
+<a href="#pedido">Pedidos</a>
 <a href="#opiniones">Opiniones</a>
-<a href="#pedido">Pedido</a>
 </nav>
 
-<section id="inicio">
-<h2>Bienvenido</h2>
-<p>Vendemos fresas y uchuvas frescas recién cosechadas 🍓 ideales para postres, batidos y comer solas.</p>
-</section>
+<!-- GALERIA -->
+<div class="section" id="galeria">
 
-<section id="productos">
-<h2>Nuestros Productos</h2>
-
-<div class="card">
-<h3>Caja grande de Fresas</h3>
-<p>Ideal para la familia</p>
-<button onclick="pedido('fresas')">Comprar</button>
-</div>
-
-<div class="card">
-<h3>Caja grande de Uchuvas</h3>
-<p>Ideal para compartir</p>
-<button onclick="pedido('uchuvas')">Comprar</button>
-</div>
-
-</section>
-
-<section id="galeria">
-<h2>Galería</h2>
+<h2>Nuestra Galería</h2>
+<p>Fresas frescas del cerro 🍓</p>
 
 <div class="galeria">
 
-<img src="c:\Users\Usuario\Downloads\Fresas1.jpeg">
+<img src="c:\Users\Usuario\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\LocalState\sessions\4439AF432710FC5F4CCD07C3139426B9DB434004\transfers\2026-10\WhatsApp Image 2026-03-10 at 8.43.12 PM.jpeg">
+<img src="https://images.unsplash.com/photo-1518635017498-87f514b751ba">
+<img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc">
+<img src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6">
 
 </div>
 
-</section>
-
-<section id="opiniones">
-<h2>Opiniones de clientes</h2>
-
-<div class="card">
-<p>"Las fresas más dulces que he probado"</p>
-<strong>- Adriana</strong>
 </div>
 
-<div class="card">
-<p>"Siempre compro aquí, súper frescas"</p>
-<strong>- Carlos</strong>
+<!-- PEDIDOS -->
+<div class="section" id="pedido">
+
+<h2>Hacer Pedido</h2>
+
+<p>Haz tu pedido directo por WhatsApp</p>
+
+<a href="https://wa.me/50683310543?text=Hola%20quiero%20hacer%20un%20pedido%20de%20fresas" target="_blank">
+
+<button class="whatsapp">
+📲 Pedir por WhatsApp
+</button>
+
+</a>
+
 </div>
 
-</section>
+<!-- OPINIONES -->
+<div class="section" id="opiniones">
 
-<section id="pedido">
-<h2>Haz tu pedido</h2>
-<p>Escríbenos por WhatsApp para hacer tu pedido</p>
-<button onclick="pedido('fresas o uchuvas')">Pedir por WhatsApp</button>
-</section>
+<h2>Opiniones de Clientes ⭐</h2>
 
-<footer>
-<p>© 2026 Fresas La Trinidad 🍓</p>
+<div class="opiniones">
+
+<div class="opinion">
+"Las fresas más ricas que he probado. Muy frescas."
+</div>
+
+<div class="opinion">
+"Excelente servicio y muy buena calidad."
+</div>
+
+<div class="opinion"> 
+"Las fresas con crema son increíbles 🍓"
+</div>
+
+</div>
+
+</div>
+
+<footer style="margin-top:40px;">
+© 2026 Fresas El Cerro
 </footer>
 
-<script>
-
-function pedido(producto){
-
-let numero="50683310543";
-
-let mensaje=encodeURIComponent("Hola, quiero comprar " + producto + " 🍓");
-
-window.open(`https://wa.me/${numero}?text=${mensaje}`);
-
-}
-
-</script>
+</div>
 
 </body>
 </html>
