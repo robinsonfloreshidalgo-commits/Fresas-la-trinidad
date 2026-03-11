@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,12 +11,26 @@
 body{
 font-family: Arial, sans-serif;
 margin:0;
-background:#fff0f3;
 color:#333;
+scroll-behavior:smooth;
+
+/* fondo con imagen */
+background-image:url("https://images.unsplash.com/photo-1464965911861-746a04b4bca6");
+background-size:cover;
+background-repeat:no-repeat;
+background-attachment:fixed;
+
+/* animación del fondo */
+animation:moverFondo 25s infinite alternate linear;
+}
+
+@keyframes moverFondo{
+0%{background-position:center top;}
+100%{background-position:center bottom;}
 }
 
 header{
-background:linear-gradient(90deg,#ff2e63,#ff6b81);
+background:rgba(255,46,99,0.9);
 color:white;
 padding:40px;
 text-align:center;
@@ -31,8 +46,8 @@ font-size:20px;
 }
 
 nav{
-background:#ff2e63;
-padding:10px;
+background:rgba(255,46,99,0.95);
+padding:15px;
 text-align:center;
 }
 
@@ -41,12 +56,26 @@ color:white;
 text-decoration:none;
 margin:15px;
 font-weight:bold;
+font-size:18px;
 }
 
-section{
-padding:40px;
-text-align:center;
+nav a:hover{
+text-decoration:underline;
 }
+
+/* CUADROS ADAPTADOS AL CONTENIDO */
+
+section{
+padding:25px 30px;
+text-align:center;
+background:rgba(255,255,255,0.85);
+margin:25px auto;
+border-radius:15px;
+display:block;
+max-width:900px;
+}
+
+/* galería */
 
 .galeria{
 display:grid;
@@ -65,28 +94,37 @@ transition:0.3s;
 transform:scale(1.05);
 }
 
+/* tarjetas */
+
 .card{
-background:white;
+background:rgba(255,255,255,0.95);
 padding:20px;
 border-radius:15px;
 box-shadow:0 5px 15px rgba(0,0,0,0.1);
-margin:20px;
+margin:15px;
 display:inline-block;
-width:250px;
+min-width:220px;
+max-width:260px;
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
 }
 
 .precio{
 font-size:25px;
 color:#ff2e63;
 font-weight:bold;
+margin:10px 0;
 }
 
 button{
 background:#25D366;
 color:white;
 border:none;
-padding:15px 25px;
-font-size:18px;
+padding:12px 20px;
+font-size:16px;
 border-radius:10px;
 cursor:pointer;
 transition:0.3s;
@@ -101,6 +139,47 @@ background:#ff2e63;
 color:white;
 text-align:center;
 padding:20px;
+margin-top:40px;
+}
+
+/* fresas cayendo */
+
+.fresas{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+overflow:hidden;
+}
+
+.fresas span{
+position:absolute;
+font-size:30px;
+animation:caer 10s linear infinite;
+}
+
+.fresas span:nth-child(1){left:5%;animation-duration:7s;}
+.fresas span:nth-child(2){left:15%;animation-duration:10s;}
+.fresas span:nth-child(3){left:25%;animation-duration:8s;}
+.fresas span:nth-child(4){left:35%;animation-duration:12s;}
+.fresas span:nth-child(5){left:45%;animation-duration:9s;}
+.fresas span:nth-child(6){left:55%;animation-duration:11s;}
+.fresas span:nth-child(7){left:65%;animation-duration:7s;}
+.fresas span:nth-child(8){left:75%;animation-duration:10s;}
+.fresas span:nth-child(9){left:85%;animation-duration:8s;}
+.fresas span:nth-child(10){left:95%;animation-duration:12s;}
+
+@keyframes caer{
+0%{
+transform:translateY(-100px) rotate(0deg);
+opacity:1;
+}
+100%{
+transform:translateY(100vh) rotate(360deg);
+opacity:0.7;
+}
 }
 
 </style>
@@ -108,9 +187,22 @@ padding:20px;
 
 <body>
 
+<div class="fresas">
+<span>🍓</span>
+<span>🍓</span>
+<span>🍓</span>
+<span>🍓</span>
+<span>🍓</span>
+<span>🍓</span>
+<span>🍓</span>
+<span>🍓</span>
+<span>🍓</span>
+<span>🍓</span>
+</div>
+
 <header>
-<h1>🍓 Fresas La Trinidad</h1>
-<p>Las fresas más frescas y dulces de la zona</p>
+<h1>🍓 Fresas y Uchuvas La Trinidad</h1>
+<p>Las fresas y uchuvas más frescas y dulces de la zona</p>
 </header>
 
 <nav>
@@ -123,16 +215,22 @@ padding:20px;
 
 <section id="inicio">
 <h2>Bienvenido</h2>
-<p>Vendemos fresas frescas recién cosechadas 🍓 ideales para postres, batidos y comer solas.</p>
+<p>Vendemos fresas y uchuvas frescas recién cosechadas 🍓 ideales para postres, batidos y comer solas.</p>
 </section>
 
 <section id="productos">
-<h2>Nuestro Producto</h2>
+<h2>Nuestros Productos</h2>
 
 <div class="card">
-<h3>Caja grande</h3>
+<h3>Caja grande de Fresas</h3>
 <p>Ideal para la familia</p>
-<p class="precio">₡2500</p>
+<button onclick="pedido('fresas')">Comprar</button>
+</div>
+
+<div class="card">
+<h3>Caja grande de Uchuvas</h3>
+<p>Ideal para compartir</p>
+<button onclick="pedido('uchuvas')">Comprar</button>
 </div>
 
 </section>
@@ -141,9 +239,19 @@ padding:20px;
 <h2>Galería</h2>
 
 <div class="galeria">
-<img src="https://tvn24.pl/najnowsze/cdn-zdjecie-i9hlgn-shutterstock_1733198153-7829906/alternates/LANDSCAPE_1280">
-<img src="https://images.unsplash.com/photo-1518635017498-87f514b751ba">
-<img src="https://img.freepik.com/fotos-premium/fresas-caja-plastico-transparente-sobre-fondo-blanco_431906-4689.jpg">
+
+<img src="c:\Users\Usuario\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\LocalState\sessions\4439AF432710FC5F4CCD07C3139426B9DB434004\transfers\2026-10\WhatsApp Image 2026-03-10 at 8.43.12 PM.jpeg">
+
+<img src="c:\Users\Usuario\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\LocalState\sessions\4439AF432710FC5F4CCD07C3139426B9DB434004\transfers\2026-10\WhatsApp Image 2026-03-10 at 8.44.07 PM.jpeg">
+
+<img src="c:\Users\Usuario\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\LocalState\sessions\4439AF432710FC5F4CCD07C3139426B9DB434004\transfers\2026-10\WhatsApp Image 2026-03-10 at 8.48.34 PM.jpeg">
+
+<img src="c:\Users\Usuario\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\LocalState\sessions\4439AF432710FC5F4CCD07C3139426B9DB434004\transfers\2026-10\WhatsApp Image 2026-03-10 at 8.54.30 PM.jpeg">
+
+<img src="c:\Users\Usuario\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\LocalState\sessions\4439AF432710FC5F4CCD07C3139426B9DB434004\transfers\2026-10\WhatsApp Image 2026-03-10 at 8.54.43 PM.jpeg">
+
+<img src="c:\Users\Usuario\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\LocalState\sessions\4439AF432710FC5F4CCD07C3139426B9DB434004\transfers\2026-10\WhatsApp Image 2026-03-10 at 8.57.00 PM.jpeg">
+
 </div>
 
 </section>
@@ -153,7 +261,7 @@ padding:20px;
 
 <div class="card">
 <p>"Las fresas más dulces que he probado"</p>
-<strong>- María</strong>
+<strong>- Adriana</strong>
 </div>
 
 <div class="card">
@@ -165,11 +273,8 @@ padding:20px;
 
 <section id="pedido">
 <h2>Haz tu pedido</h2>
-
 <p>Escríbenos por WhatsApp para hacer tu pedido</p>
-
-<button onclick="pedido()">Pedir por WhatsApp</button>
-
+<button onclick="pedido('fresas o uchuvas')">Pedir por WhatsApp</button>
 </section>
 
 <footer>
@@ -178,13 +283,18 @@ padding:20px;
 
 <script>
 
-function pedido(){
-let numero="+50683310543";
-let mensaje="Hola quiero comprar fresas 🍓";
+function pedido(producto){
+
+let numero="50683310543";
+
+let mensaje=encodeURIComponent("Hola, quiero comprar " + producto + " 🍓");
+
 window.open(`https://wa.me/${numero}?text=${mensaje}`);
+
 }
 
 </script>
 
 </body>
 </html>
+```
