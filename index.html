@@ -1,129 +1,178 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fresas El Cerro 🍓</title>
+
+<title>Fresas y Uchuvas La Trinidad 🍓</title>
 
 <style>
 
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
-}
+/* GENERAL */
 
 body{
-font-family:Arial, sans-serif;
-color:white;
-text-align:center;
-background-image:url("https://images.unsplash.com/photo-1464965911861-746a04b4bca6");
-background-size:cover;
-background-position:center;
-background-attachment:fixed;
-overflow-x:hidden;
+margin:0;
+font-family: 'Segoe UI', sans-serif;
+background:#fff5f7;
+color:#333;
+scroll-behavior:smooth;
 }
 
-/* capa oscura */
-.overlay{
-background:rgba(0,0,0,0.55);
-min-height:100vh;
-padding-bottom:40px;
-}
+/* NAVBAR */
 
-/* titulo */
-header{
-padding:40px 20px;
-font-size:40px;
-font-weight:bold;
-}
-
-/* menu */
 nav{
-margin-bottom:20px;
+background:#c4002f;
+color:white;
+display:flex;
+justify-content:space-between;
+padding:15px 30px;
+align-items:center;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+nav h2{
+margin:0;
 }
 
 nav a{
-display:inline-block;
 color:white;
 text-decoration:none;
-margin:10px;
-padding:10px 20px;
+margin-left:20px;
+font-weight:bold;
+}
+
+/* HERO */
+
+.hero{
+height:90vh;
+background-image:url("https://images.unsplash.com/photo-1464965911861-746a04b4bca6");
+background-size:cover;
+background-position:center;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+}
+
+.hero h1{
+font-size:50px;
+background:rgba(0,0,0,0.5);
+padding:20px;
 border-radius:10px;
-background:rgba(255,255,255,0.2);
+}
+
+.hero p{
+font-size:20px;
+}
+
+/* SECCIONES */
+
+section{
+padding:60px 20px;
+max-width:1000px;
+margin:auto;
+}
+
+h2{
+text-align:center;
+color:#c4002f;
+margin-bottom:30px;
+}
+
+/* PRODUCTOS */
+
+.productos{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+text-align:center;
 transition:0.3s;
 }
 
-nav a:hover{
-background:#ff4d6d;
+.card:hover{
+transform:translateY(-10px);
 }
 
-/* secciones */
-.section{
-background:rgba(255,255,255,0.9);
-color:#333;
-width:90%;
-max-width:900px;
-margin:auto;
-margin-top:30px;
-padding:25px;
-border-radius:15px;
+.card img{
+width:100%;
+border-radius:10px;
 }
 
-/* galeria */
+/* GALERIA */
+
 .galeria{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
 gap:15px;
-margin-top:20px;
 }
 
 .galeria img{
 width:100%;
 border-radius:10px;
-transition:transform 0.4s;
+transition:0.3s;
 }
 
-/* animacion imagen */
 .galeria img:hover{
-transform:scale(1.1) rotate(2deg);
+transform:scale(1.1);
 }
 
-/* opiniones */
+/* OPINIONES */
+
 .opiniones{
-margin-top:20px;
 display:grid;
-gap:15px;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
 }
 
 .opinion{
-background:#fff;
-padding:15px;
+background:white;
+padding:20px;
 border-radius:10px;
-box-shadow:0 3px 8px rgba(0,0,0,0.2);
+box-shadow:0 5px 10px rgba(0,0,0,0.1);
 }
 
-/* boton whatsapp */
+/* WHATSAPP */
+
 .whatsapp{
-background:#25D366;
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25d366;
 color:white;
-padding:15px 25px;
+padding:15px 20px;
+border-radius:50px;
 font-size:18px;
-border:none;
-border-radius:10px;
-cursor:pointer;
-margin-top:20px;
+text-decoration:none;
+box-shadow:0 0 10px rgba(0,0,0,0.3);
 }
 
-.whatsapp:hover{
-background:#1ebe5d;
+/* FOOTER */
+
+footer{
+background:#c4002f;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:40px;
 }
 
-/* fresas cayendo */
-.fresa{
+/* FRUTAS CAYENDO */
+
+.fruta{
 position:fixed;
 top:-50px;
-font-size:25px;
+font-size:30px;
 animation:caer linear infinite;
 }
 
@@ -132,118 +181,163 @@ animation:caer linear infinite;
 transform:translateY(-50px);
 opacity:1;
 }
-
 100%{
-transform:translateY(110vh);
+transform:translateY(100vh);
 opacity:0;
 }
 }
 
-/* responsive celular */
-@media (max-width:600px){
-
-header{
-font-size:28px;
-}
-
-nav a{
-display:block;
-margin:8px auto;
-width:80%;
-}
-
-.section{
-width:95%;
-}
-
-}
-
 </style>
+
 </head>
 
 <body>
 
-<!-- fresas animadas -->
-<div class="fresa" style="left:5%; animation-duration:6s;">🍓</div>
-<div class="fresa" style="left:20%; animation-duration:8s;">🍓</div>
-<div class="fresa" style="left:40%; animation-duration:7s;">🍓</div>
-<div class="fresa" style="left:60%; animation-duration:9s;">🍓</div>
-<div class="fresa" style="left:80%; animation-duration:6s;">🍓</div>
-
-<div class="overlay">
-
-<header>
-🍓 Fresas El Cerro 🍓
-</header>
+<!-- NAVBAR -->
 
 <nav>
+
+<h2>🍓 La Trinidad</h2>
+
+<div>
+<a href="#productos">Productos</a>
 <a href="#galeria">Galería</a>
-<a href="#pedido">Pedidos</a>
 <a href="#opiniones">Opiniones</a>
+<a href="#contacto">Pedidos</a>
+</div>
+
 </nav>
 
-<!-- GALERIA -->
-<div class="section" id="galeria">
+<!-- HERO -->
 
-<h2>Nuestra Galería</h2>
-<p>Fresas frescas del cerro 🍓</p>
+<div class="hero">
+
+<div>
+<h1>Fresas y Uchuvas Frescas 🍓🟡</h1>
+<p>Calidad natural directo a tu mesa</p>
+</div>
+
+</div>
+
+<!-- PRODUCTOS -->
+
+<section id="productos">
+
+<h2>Nuestros Productos</h2>
+
+<div class="productos">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1518635017498-87f514b751ba">
+<h3>Fresas</h3>
+<p>Fresas frescas, dulces y perfectas para postres.</p>
+</div>
+
+<div class="card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Physalis_peruviana_fruit.jpg">
+<h3>Uchuvas</h3>
+<p>Uchuvas naturales llenas de sabor y vitaminas.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- GALERIA -->
+
+<section id="galeria">
+
+<h2>Galería</h2>
 
 <div class="galeria">
 
-<img src="c:\Users\Usuario\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\LocalState\sessions\4439AF432710FC5F4CCD07C3139426B9DB434004\transfers\2026-10\WhatsApp Image 2026-03-10 at 8.43.12 PM.jpeg">
-<img src="https://images.unsplash.com/photo-1518635017498-87f514b751ba">
-<img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc">
 <img src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6">
+<img src="https://images.unsplash.com/photo-1518635017498-87f514b751ba">
+<img src="https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2">
+<img src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce">
 
 </div>
 
-</div>
-
-<!-- PEDIDOS -->
-<div class="section" id="pedido">
-
-<h2>Hacer Pedido</h2>
-
-<p>Haz tu pedido directo por WhatsApp</p>
-
-<a href="https://wa.me/50683310543?text=Hola%20quiero%20hacer%20un%20pedido%20de%20fresas" target="_blank">
-
-<button class="whatsapp">
-📲 Pedir por WhatsApp
-</button>
-
-</a>
-
-</div>
+</section>
 
 <!-- OPINIONES -->
-<div class="section" id="opiniones">
 
-<h2>Opiniones de Clientes ⭐</h2>
+<section id="opiniones">
+
+<h2>Opiniones de Clientes</h2>
 
 <div class="opiniones">
 
 <div class="opinion">
-"Las fresas más ricas que he probado. Muy frescas."
+⭐⭐⭐⭐⭐  
+Las fresas son deliciosas y muy frescas.
 </div>
 
 <div class="opinion">
-"Excelente servicio y muy buena calidad."
+⭐⭐⭐⭐⭐  
+Excelente atención y productos de calidad.
 </div>
 
-<div class="opinion"> 
-"Las fresas con crema son increíbles 🍓"
+<div class="opinion">
+⭐⭐⭐⭐⭐  
+Las uchuvas son increíbles, súper recomendadas.
 </div>
 
 </div>
 
-</div>
+</section>
 
-<footer style="margin-top:40px;">
-© 2026 Fresas El Cerro
+<!-- CONTACTO -->
+
+<section id="contacto">
+
+<h2>Haz tu pedido</h2>
+
+<p style="text-align:center;">
+Contáctanos directamente por WhatsApp para hacer tu pedido.
+</p>
+
+</section>
+
+<footer>
+
+<p>🍓 Fresas y Uchuvas La Trinidad</p>
+<p>Pedidos al WhatsApp: +506 8331 0543</p>
+
 </footer>
 
-</div>
+<a class="whatsapp" href="https://wa.me/50683310543" target="_blank">
+💬 WhatsApp
+</a>
+
+<script>
+
+/* frutas cayendo */
+
+function crearFruta(){
+
+const fruta=document.createElement("div");
+
+fruta.classList.add("fruta");
+
+const frutas=["🍓","🟡"];
+
+fruta.innerHTML=frutas[Math.floor(Math.random()*frutas.length)];
+
+fruta.style.left=Math.random()*100+"vw";
+fruta.style.animationDuration=(4+Math.random()*4)+"s";
+
+document.body.appendChild(fruta);
+
+setTimeout(()=>{
+fruta.remove();
+},8000);
+
+}
+
+setInterval(crearFruta,600);
+
+</script>
 
 </body>
 </html>
