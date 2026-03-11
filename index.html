@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fresas La Trinidad 🍓</title>
+
+<style>
+
+body{
+font-family: Arial, sans-serif;
+margin:0;
+background:#fff0f3;
+color:#333;
+}
+
+header{
+background:linear-gradient(90deg,#ff2e63,#ff6b81);
+color:white;
+padding:40px;
+text-align:center;
+}
+
+header h1{
+font-size:45px;
+margin:0;
+}
+
+header p{
+font-size:20px;
+}
+
+nav{
+background:#ff2e63;
+padding:10px;
+text-align:center;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin:15px;
+font-weight:bold;
+}
+
+section{
+padding:40px;
+text-align:center;
+}
+
+.galeria{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.galeria img{
+width:100%;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+transition:0.3s;
+}
+
+.galeria img:hover{
+transform:scale(1.05);
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+margin:20px;
+display:inline-block;
+width:250px;
+}
+
+.precio{
+font-size:25px;
+color:#ff2e63;
+font-weight:bold;
+}
+
+button{
+background:#25D366;
+color:white;
+border:none;
+padding:15px 25px;
+font-size:18px;
+border-radius:10px;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#1ebc59;
+}
+
+footer{
+background:#ff2e63;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🍓 Fresas La Trinidad</h1>
+<p>Las fresas más frescas y dulces de la zona</p>
+</header>
+
+<nav>
+<a href="#inicio">Inicio</a>
+<a href="#productos">Productos</a>
+<a href="#galeria">Galería</a>
+<a href="#opiniones">Opiniones</a>
+<a href="#pedido">Pedido</a>
+</nav>
+
+<section id="inicio">
+<h2>Bienvenido</h2>
+<p>Vendemos fresas frescas recién cosechadas 🍓 ideales para postres, batidos y comer solas.</p>
+</section>
+
+<section id="productos">
+<h2>Nuestro Producto</h2>
+
+<div class="card">
+<h3>Caja grande</h3>
+<p>Ideal para la familia</p>
+<p class="precio">₡2500</p>
+</div>
+
+</section>
+
+<section id="galeria">
+<h2>Galería</h2>
+
+<div class="galeria">
+<img src="https://tvn24.pl/najnowsze/cdn-zdjecie-i9hlgn-shutterstock_1733198153-7829906/alternates/LANDSCAPE_1280">
+<img src="https://images.unsplash.com/photo-1518635017498-87f514b751ba">
+<img src="https://img.freepik.com/fotos-premium/fresas-caja-plastico-transparente-sobre-fondo-blanco_431906-4689.jpg">
+</div>
+
+</section>
+
+<section id="opiniones">
+<h2>Opiniones de clientes</h2>
+
+<div class="card">
+<p>"Las fresas más dulces que he probado"</p>
+<strong>- María</strong>
+</div>
+
+<div class="card">
+<p>"Siempre compro aquí, súper frescas"</p>
+<strong>- Carlos</strong>
+</div>
+
+</section>
+
+<section id="pedido">
+<h2>Haz tu pedido</h2>
+
+<p>Escríbenos por WhatsApp para hacer tu pedido</p>
+
+<button onclick="pedido()">Pedir por WhatsApp</button>
+
+</section>
+
+<footer>
+<p>© 2026 Fresas La Trinidad 🍓</p>
+</footer>
+
+<script>
+
+function pedido(){
+let numero="+50683310543";
+let mensaje="Hola quiero comprar fresas 🍓";
+window.open(`https://wa.me/${numero}?text=${mensaje}`);
+}
+
+</script>
+
+</body>
+</html>
